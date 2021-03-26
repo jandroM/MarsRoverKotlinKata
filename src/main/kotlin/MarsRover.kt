@@ -64,14 +64,11 @@ object MarsRover {
             if (command == "r") {
                 if (roverz == "n") {
                     roverz = "e"
-                }
-                if (roverz == "e") {
+                } else if (roverz == "e") {
                     roverz = "s"
-                }
-                if (roverz == "s") {
+                } else if (roverz == "s") {
                     roverz = "w"
-                }
-                if (roverz == "w") {
+                } else if (roverz == "w") {
                     roverz = "n"
                 }
             }

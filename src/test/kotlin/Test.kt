@@ -18,11 +18,8 @@ class Test {
         System.setOut(PrintStream(outputStream))
 
         try {
-
             MarsRover.main(emptyArray())
-        } catch (e: Exception){
-
-        }
+        } catch (e: Exception){}
 
         val output = outputStream.toString().split("\n")
 
@@ -50,6 +47,28 @@ class Test {
         val output = outputStream.toString().split("\n")
 
         assertEquals("Rover is at x:0 y:0 facing:n", output[output.size-3])
+    }
+
+    @Test
+    fun `it should turn right`(){
+        val inputString = arrayOf("10", "20", "0", "0", "n", "r").joinToString("\n")
+        val inputStream = ByteArrayInputStream(inputString.toByteArray())
+
+        System.setIn(inputStream)
+
+        val outputStream = ByteArrayOutputStream()
+        System.setOut(PrintStream(outputStream))
+
+        try {
+
+            MarsRover.main(emptyArray())
+        } catch (e: Exception){
+
+        }
+
+        val output = outputStream.toString().split("\n")
+
+        assertEquals("Rover is at x:0 y:0 facing:e", output[output.size-3])
     }
 
 
