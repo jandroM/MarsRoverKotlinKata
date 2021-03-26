@@ -71,7 +71,7 @@ object MarsRover {
         roverz: String?,
         rovery: Int,
         roverx: Int
-    ): Pair<Int, Int> {
+    ): Position {
         var rovery1 = rovery
         var roverx1 = roverx
         if (roverz == "n") {
@@ -86,14 +86,14 @@ object MarsRover {
         if (roverz == "e") {
             roverx1 -= 1
         }
-        return Pair(roverx1, rovery1)
+        return Position(roverx1, rovery1)
     }
 
     private fun moveForward(
         roverz: String?,
         rovery: Int,
         roverx: Int
-    ): Pair<Int, Int> {
+    ): Position {
         var rovery1 = rovery
         var roverx1 = roverx
         if (roverz == "n") {
@@ -108,6 +108,6 @@ object MarsRover {
         if (roverz == "e") {
             roverx1 += 1
         }
-        return Pair(roverx1, rovery1)
+        return Position(roverx1, rovery1)
     }
 }

@@ -16,9 +16,11 @@ class Test {
 
         val outputStream = ByteArrayOutputStream()
         System.setOut(PrintStream(outputStream))
+
         try {
             MarsRover.main(emptyArray())
         } catch (e: Exception){}
+
         val output = outputStream.toString().split("\n")
         assertEquals("Rover is at x:0 y:1 facing:n", output[output.size-3])
     }
@@ -36,8 +38,8 @@ class Test {
 
         try {
             MarsRover.main(emptyArray())
-        } catch (e: Exception){
-        }
+        } catch (e: Exception){}
+
         val output = outputStream.toString().split("\n")
         assertEquals("Rover is at x:0 y:0 facing:n", output[output.size-3])
     }
@@ -51,12 +53,11 @@ class Test {
 
         val outputStream = ByteArrayOutputStream()
         System.setOut(PrintStream(outputStream))
+
         try {
-
             MarsRover.main(emptyArray())
-        } catch (e: Exception){
+        } catch (e: Exception){}
 
-        }
         val output = outputStream.toString().split("\n")
         assertEquals("Rover is at x:0 y:0 facing:e", output[output.size-3])
     }
@@ -70,12 +71,11 @@ class Test {
 
         val outputStream = ByteArrayOutputStream()
         System.setOut(PrintStream(outputStream))
+
         try {
-
             MarsRover.main(emptyArray())
-        } catch (e: Exception){
+        } catch (e: Exception){}
 
-        }
         val output = outputStream.toString().split("\n")
         assertEquals("Rover is at x:0 y:0 facing:w", output[output.size-3])
     }
