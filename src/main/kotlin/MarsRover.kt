@@ -20,56 +20,94 @@ object MarsRover {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
             val command = reader.next()
             if (command == "f") {
-                if (roverz == "n") {
-                    rovery += 1
-                }
-                if (roverz == "w") {
-                    roverx -= 1
-                }
-                if (roverz == "s") {
-                    rovery -= 1
-                }
-                if (roverz == "e") {
-                    roverx += 1
-                }
+                val pair = moveForward(roverz, rovery, roverx)
+                roverx = pair.first
+                rovery = pair.second
             }
             if (command == "b") {
-                if (roverz == "n") {
-                    rovery -= 1
-                }
-                if (roverz == "w") {
-                    roverx += 1
-                }
-                if (roverz == "s") {
-                    rovery += 1
-                }
-                if (roverz == "e") {
-                    roverx -= 1
-                }
+                val pair = moveBackward(roverz, rovery, roverx)
+                roverx = pair.first
+                rovery = pair.second
             }
             if (command == "l") {
-                if (roverz == "n") {
-                    roverz = "w"
-                } else if (roverz == "w") {
-                    roverz = "s"
-                } else if (roverz == "s") {
-                    roverz = "e"
-                } else if (roverz == "e") {
-                    roverz = "n"
-                }
+                roverz = moveLeft(roverz)
             }
             if (command == "r") {
-                if (roverz == "n") {
-                    roverz = "e"
-                } else if (roverz == "e") {
-                    roverz = "s"
-                } else if (roverz == "s") {
-                    roverz = "w"
-                } else if (roverz == "w") {
-                    roverz = "n"
-                }
+                roverz = moveRight(roverz)
             }
             println(String.format("Rover is at x:%d y:%d facing:%s", roverx, rovery, roverz))
         } while (true)
+    }
+
+    private fun moveRight(roverz: String?): String? {
+        var roverz1 = roverz
+        if (roverz1 == "n") {
+            roverz1 = "e"
+        } else if (roverz1 == "e") {
+            roverz1 = "s"
+        } else if (roverz1 == "s") {
+            roverz1 = "w"
+        } else if (roverz1 == "w") {
+            roverz1 = "n"
+        }
+        return roverz1
+    }
+
+    private fun moveLeft(roverz: String?): String? {
+        var roverz1 = roverz
+        if (roverz1 == "n") {
+            roverz1 = "w"
+        } else if (roverz1 == "w") {
+            roverz1 = "s"
+        } else if (roverz1 == "s") {
+            roverz1 = "e"
+        } else if (roverz1 == "e") {
+            roverz1 = "n"
+        }
+        return roverz1
+    }
+
+    private fun moveBackward(
+        roverz: String?,
+        rovery: Int,
+        roverx: Int
+    ): Pair<Int, Int> {
+        var rovery1 = rovery
+        var roverx1 = roverx
+        if (roverz == "n") {
+            rovery1 -= 1
+        }
+        if (roverz == "w") {
+            roverx1 += 1
+        }
+        if (roverz == "s") {
+            rovery1 += 1
+        }
+        if (roverz == "e") {
+            roverx1 -= 1
+        }
+        return Pair(roverx1, rovery1)
+    }
+
+    private fun moveForward(
+        roverz: String?,
+        rovery: Int,
+        roverx: Int
+    ): Pair<Int, Int> {
+        var rovery1 = rovery
+        var roverx1 = roverx
+        if (roverz == "n") {
+            rovery1 += 1
+        }
+        if (roverz == "w") {
+            roverx1 -= 1
+        }
+        if (roverz == "s") {
+            rovery1 -= 1
+        }
+        if (roverz == "e") {
+            roverx1 += 1
+        }
+        return Pair(roverx1, rovery1)
     }
 }
