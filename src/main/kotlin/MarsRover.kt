@@ -24,16 +24,17 @@ object MarsRover {
         var position = Position(roverx, rovery)
         println("Insert initial rover direction:")
         var direction = Direction.fromChar(reader.next())
+        var rover = Rover(position, direction)
         do {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
             val command = Command.fromChar(reader.next())
             if (command == FORWARD) {
                 val c = ForwardCommand()
-                position = c.execute(direction, position)
+                rover = c.execute(rover)
             }
             if (command == BACKWARD) {
                 val c = BackwardCommand()
-                position = c.execute(direction, position)
+                rover = c.execute(rover)
             }
             if (command == LEFT) {
                 direction = moveLeft(direction)
@@ -41,7 +42,10 @@ object MarsRover {
             if (command == RIGHT) {
                 direction = moveRight(direction)
             }
-            println(String.format("Rover is at x:%d y:%d facing:%s", position.x, position.y, direction.char))
+            println(String.format("Rover is at x:%d y:%d facing:%s",
+                                  rover.position.x,
+                                  rover.position.y,
+                                  direction.char))
         } while (true)
     }
 

@@ -1,3 +1,3 @@
 interface MoveCommand {
-    fun execute(direction: Direction, position: Position): Position
+    fun execute(rover: Rover): Rover
 }

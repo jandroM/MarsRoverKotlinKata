@@ -4,10 +4,10 @@ import Direction.SOUTH
 import Direction.WEST
 
 class ForwardCommand : MoveCommand {
-    override fun execute(direction: Direction, position: Position) = when (direction) {
-        NORTH -> Position(position.x, position.y + 1)
-        WEST  -> Position(position.x - 1, position.y)
-        SOUTH -> Position(position.x, position.y - 1)
-        EAST  -> Position(position.x + 1, position.y)
+    override fun execute(rover: Rover) = when (rover.direction) {
+        NORTH -> rover.copy(position = Position(rover.position.x, rover.position.y + 1))
+        WEST  -> rover.copy(position = Position(rover.position.x - 1, rover.position.y))
+        SOUTH -> rover.copy(position = Position(rover.position.x, rover.position.y - 1))
+        EAST  -> rover.copy(position = Position(rover.position.x + 1, rover.position.y))
     }
 }
