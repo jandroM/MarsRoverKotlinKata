@@ -14,18 +14,19 @@ object MarsRover {
         var roverx = reader.nextInt()
         println("Insert vertical initial rover position:")
         var rovery = reader.nextInt()
+        var position = Position(roverx,rovery)
         println("Insert initial rover direction:")
         var roverz = reader.next() //n = north, e = east, w = west, s = south
         do {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
             val command = reader.next()
             if (command == "f") {
-                val position = moveForward(roverz, rovery, roverx)
+                position = moveForward(roverz, position)
                 roverx = position.x
                 rovery = position.y
             }
             if (command == "b") {
-                val position = moveBackward(roverz, rovery, roverx)
+                position = moveBackward(roverz, position)
                 roverx = position.x
                 rovery = position.y
             }
@@ -69,11 +70,10 @@ object MarsRover {
 
     private fun moveBackward(
         roverz: String?,
-        rovery: Int,
-        roverx: Int
+        position: Position
     ): Position {
-        var rovery1 = rovery
-        var roverx1 = roverx
+        var rovery1 = position.y
+        var roverx1 = position.x
         if (roverz == "n") {
             rovery1 -= 1
         }
@@ -91,11 +91,10 @@ object MarsRover {
 
     private fun moveForward(
         roverz: String?,
-        rovery: Int,
-        roverx: Int
+        position: Position
     ): Position {
-        var rovery1 = rovery
-        var roverx1 = roverx
+        var rovery1 = position.y
+        var roverx1 = position.x
         if (roverz == "n") {
             rovery1 += 1
         }
