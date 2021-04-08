@@ -1,7 +1,11 @@
+package command
+
 import Direction.EAST
 import Direction.NORTH
 import Direction.SOUTH
 import Direction.WEST
+import Position
+import Rover
 
 class BackwardCommand : Command {
     override fun execute(rover: Rover) = when (rover.direction) {

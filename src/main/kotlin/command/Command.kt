@@ -1,3 +1,7 @@
+package command
+
+import Rover
+
 interface Command {
     fun execute(rover: Rover): Rover
 

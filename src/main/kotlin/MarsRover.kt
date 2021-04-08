@@ -1,3 +1,4 @@
+import command.Command
 import java.util.Scanner
 
 object MarsRover {
