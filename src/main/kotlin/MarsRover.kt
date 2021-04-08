@@ -20,14 +20,14 @@ object MarsRover {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
             val command = reader.next()
             if (command == "f") {
-                val pair = moveForward(roverz, rovery, roverx)
-                roverx = pair.first
-                rovery = pair.second
+                val position = moveForward(roverz, rovery, roverx)
+                roverx = position.x
+                rovery = position.y
             }
             if (command == "b") {
-                val pair = moveBackward(roverz, rovery, roverx)
-                roverx = pair.first
-                rovery = pair.second
+                val position = moveBackward(roverz, rovery, roverx)
+                roverx = position.x
+                rovery = position.y
             }
             if (command == "l") {
                 roverz = moveLeft(roverz)
