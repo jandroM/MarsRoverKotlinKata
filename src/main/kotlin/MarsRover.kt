@@ -54,45 +54,17 @@ object MarsRover {
         EAST  -> NORTH
     }
 
-    private fun moveBackward(
-            direction: Direction,
-            position: Position
-                            ): Position {
-        var rovery1 = position.y
-        var roverx1 = position.x
-        if (direction == NORTH) {
-            rovery1 -= 1
-        }
-        if (direction == WEST) {
-            roverx1 += 1
-        }
-        if (direction == SOUTH) {
-            rovery1 += 1
-        }
-        if (direction == EAST) {
-            roverx1 -= 1
-        }
-        return Position(roverx1, rovery1)
+    private fun moveBackward(direction: Direction, position: Position) = when (direction) {
+        NORTH -> Position(position.x, position.y - 1)
+        WEST  -> Position(position.x + 1, position.y)
+        SOUTH -> Position(position.x, position.y + 1)
+        EAST  -> Position(position.x - 1, position.y)
     }
 
-    private fun moveForward(
-            direction: Direction,
-            position: Position
-                           ): Position {
-        var rovery1 = position.y
-        var roverx1 = position.x
-        if (direction == NORTH) {
-            rovery1 += 1
-        }
-        if (direction == WEST) {
-            roverx1 -= 1
-        }
-        if (direction == SOUTH) {
-            rovery1 -= 1
-        }
-        if (direction == EAST) {
-            roverx1 += 1
-        }
-        return Position(roverx1, rovery1)
+    private fun moveForward(direction: Direction, position: Position) = when (direction) {
+        NORTH -> Position(position.x, position.y + 1)
+        WEST  -> Position(position.x - 1, position.y)
+        SOUTH -> Position(position.x, position.y - 1)
+        EAST  -> Position(position.x + 1, position.y)
     }
 }
