@@ -40,32 +40,18 @@ object MarsRover {
         } while (true)
     }
 
-    private fun moveRight(direction: Direction): Direction {
-        var roverz1 = direction
-        if (roverz1 == NORTH) {
-            roverz1 = EAST
-        } else if (roverz1 == EAST) {
-            roverz1 = SOUTH
-        } else if (roverz1 == SOUTH) {
-            roverz1 = WEST
-        } else if (roverz1 == WEST) {
-            roverz1 = NORTH
-        }
-        return roverz1
+    private fun moveRight(direction: Direction) = when (direction) {
+        NORTH -> EAST
+        EAST  -> SOUTH
+        SOUTH -> WEST
+        WEST  -> NORTH
     }
 
-    private fun moveLeft(direction: Direction): Direction {
-        var roverz1 = direction
-        if (roverz1 == NORTH) {
-            roverz1 = WEST
-        } else if (roverz1 == WEST) {
-            roverz1 = SOUTH
-        } else if (roverz1 == SOUTH) {
-            roverz1 = EAST
-        } else if (roverz1 == EAST) {
-            roverz1 = NORTH
-        }
-        return roverz1
+    private fun moveLeft(direction: Direction) = when (direction) {
+        NORTH -> WEST
+        WEST  -> SOUTH
+        SOUTH -> EAST
+        EAST  -> NORTH
     }
 
     private fun moveBackward(
