@@ -1,4 +1,7 @@
-import Command.*
+import Command.BACKWARD
+import Command.FORWARD
+import Command.LEFT
+import Command.RIGHT
 import Direction.EAST
 import Direction.NORTH
 import Direction.SOUTH
@@ -25,10 +28,12 @@ object MarsRover {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
             val command = Command.fromChar(reader.next())
             if (command == FORWARD) {
-                position = moveForward(direction, position)
+                val c = ForwardCommand()
+                position = c.execute(direction, position)
             }
             if (command == BACKWARD) {
-                position = moveBackward(direction, position)
+                val c = BackwardCommand()
+                position = c.execute(direction, position)
             }
             if (command == LEFT) {
                 direction = moveLeft(direction)
@@ -52,19 +57,5 @@ object MarsRover {
         WEST  -> SOUTH
         SOUTH -> EAST
         EAST  -> NORTH
-    }
-
-    private fun moveBackward(direction: Direction, position: Position) = when (direction) {
-        NORTH -> Position(position.x, position.y - 1)
-        WEST  -> Position(position.x + 1, position.y)
-        SOUTH -> Position(position.x, position.y + 1)
-        EAST  -> Position(position.x - 1, position.y)
-    }
-
-    private fun moveForward(direction: Direction, position: Position) = when (direction) {
-        NORTH -> Position(position.x, position.y + 1)
-        WEST  -> Position(position.x - 1, position.y)
-        SOUTH -> Position(position.x, position.y - 1)
-        EAST  -> Position(position.x + 1, position.y)
     }
 }
