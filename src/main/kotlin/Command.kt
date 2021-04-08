@@ -1,12 +1,15 @@
-enum class Command(val char: String) {
-    FORWARD("f"),
-    BACKWARD("b"),
-    LEFT("l"),
-    RIGHT("r");
+interface Command {
+    fun execute(rover: Rover): Rover
 
     companion object {
         fun fromChar(char: String): Command {
-            return values().first { it.char == char }
+            return when (char) {
+                "f"  -> ForwardCommand()
+                "b"  -> BackwardCommand()
+                "l"  -> TurnLeftCommand()
+                "r"  -> TurnRightCommand()
+                else -> throw Exception("Comando no valido")
+            }
         }
     }
 }
