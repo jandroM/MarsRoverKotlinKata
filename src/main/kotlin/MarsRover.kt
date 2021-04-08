@@ -22,13 +22,9 @@ object MarsRover {
             val command = reader.next()
             if (command == "f") {
                 position = moveForward(roverz, position)
-                roverx = position.x
-                rovery = position.y
             }
             if (command == "b") {
                 position = moveBackward(roverz, position)
-                roverx = position.x
-                rovery = position.y
             }
             if (command == "l") {
                 roverz = moveLeft(roverz)
@@ -36,7 +32,7 @@ object MarsRover {
             if (command == "r") {
                 roverz = moveRight(roverz)
             }
-            println(String.format("Rover is at x:%d y:%d facing:%s", roverx, rovery, roverz))
+            println(String.format("Rover is at x:%d y:%d facing:%s", position.x, position.y, roverz))
         } while (true)
     }
 
