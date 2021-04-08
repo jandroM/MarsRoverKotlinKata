@@ -1,3 +1,4 @@
+import Command.*
 import Direction.EAST
 import Direction.NORTH
 import Direction.SOUTH
@@ -19,24 +20,23 @@ object MarsRover {
         var rovery = reader.nextInt()
         var position = Position(roverx, rovery)
         println("Insert initial rover direction:")
-        var direction = reader.next() //n = north, e = east, w = west, s = south
-        var d = Direction.fromChar(direction)
+        var direction = Direction.fromChar(reader.next())
         do {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
-            val command = reader.next()
-            if (command == "f") {
-                position = moveForward(d, position)
+            val command = Command.fromChar(reader.next())
+            if (command == FORWARD) {
+                position = moveForward(direction, position)
             }
-            if (command == "b") {
-                position = moveBackward(d, position)
+            if (command == BACKWARD) {
+                position = moveBackward(direction, position)
             }
-            if (command == "l") {
-                d = moveLeft(d)
+            if (command == LEFT) {
+                direction = moveLeft(direction)
             }
-            if (command == "r") {
-                d = moveRight(d)
+            if (command == RIGHT) {
+                direction = moveRight(direction)
             }
-            println(String.format("Rover is at x:%d y:%d facing:%s", position.x, position.y, d.char))
+            println(String.format("Rover is at x:%d y:%d facing:%s", position.x, position.y, direction.char))
         } while (true)
     }
 
