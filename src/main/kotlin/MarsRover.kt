@@ -20,6 +20,7 @@ object MarsRover {
         var rover = Rover(position, direction)
         do {
             println("Insert command (f = forward, b = backward, l = turn left, r = turn right):")
+            //rover.execute(command)
             rover = Command.fromChar(reader.next()).execute(rover)
             println(String.format("Rover is at x:%d y:%d facing:%s",
                                   rover.position.x,
